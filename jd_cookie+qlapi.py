@@ -6,7 +6,7 @@ import json
 def get_token():
     url = 'http://192.168.100.1:5700/open/auth/token?client_id=A__v62Lb9S3D&client_secret=COO_2elt4GtPq3wAOYPHauaP&'  #http://你的青龙后台:端口（默认5700）去应用里面设置中注册一个,client_id=你的CLIENT CLIENT_SECRET=你的CLIENT_SECRET
     response = requests.get(url)
-    data = json.loads(response.content.decode()) #把json改成data
+    data = json.loads(response.content.decode()) 
     return data['data']['token']
 
 # 获取访问令牌
@@ -19,8 +19,8 @@ headers = {
 
 # 获取环境变量详情
 url1 = 'http://192.168.100.1:5700/open/envs'#改为http://你的青龙后台:端口（默认5700）/open/envs
-res = requests.get(url1, headers=headers) #把requests改成res
-envs = json.loads(res.content.decode()) #把响应的内容转换成json格式的数据
+res = requests.get(url1, headers=headers) 
+envs = json.load
 print("所有的环境变量如下：")
 for env in envs["data"]: #遍历所有的环境变量
     print("名称：", env["name"])
