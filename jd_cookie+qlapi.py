@@ -4,7 +4,7 @@ import json
 
 # 定义一个函数，用来获取访问令牌
 def get_token():
-    url = 'http://192.168.100.1:5700/open/auth/token?client_id=A__v62Lb9S3D&client_secret=COO_2elt4GtPq3wAOYPHauaP&'  #去应用里面设置中注册一个
+    url = 'http://192.168.100.1:5700/open/auth/token?client_id=A__v62Lb9S3D&client_secret=COO_2elt4GtPq3wAOYPHauaP&'  #http://你的青龙后台:端口（默认5700）去应用里面设置中注册一个,client_id=你的CLIENT CLIENT_SECRET=你的CLIENT_SECRET
     response = requests.get(url)
     data = json.loads(response.content.decode()) #把json改成data
     return data['data']['token']
@@ -18,7 +18,7 @@ headers = {
 }
 
 # 获取环境变量详情
-url1 = 'http://192.168.100.1:5700/open/envs'
+url1 = 'http://192.168.100.1:5700/open/envs'#改为http://你的青龙后台:端口（默认5700）/open/envs
 res = requests.get(url1, headers=headers) #把requests改成res
 envs = json.loads(res.content.decode()) #把响应的内容转换成json格式的数据
 print("所有的环境变量如下：")
@@ -69,7 +69,7 @@ for env in envs["data"]: #遍历所有的环境变量
             headers['Cookie'] = pt_key + pt_pin
 
             # 更新指定的环境变量的值，把京东的cookie作为环境变量的值
-            url2 = 'http://192.168.100.1:5700/open/envs/'
+            url2 = 'http://192.168.100.1:5700/open/envs/'#改为http://你的青龙后台:端口（默认5700）/open/envs
             data ={
             "value": pt_key + pt_pin, #把京东的cookie作为value的内容
             "name": env["name"], #保持其他属性不变
